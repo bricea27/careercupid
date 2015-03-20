@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<section class="home">
+  <div class="jumbotron">
+    <div class="container">
+
+      <%= render partial: 'header' %>
+
+      <h1>CareerCupid</h1>
+      <h2>Find a Mentor. Find a Career you Love.</h2>
+
+
+      <form class="form-inline quick-search">
+        <div class="form-group">
+          <label><h4>I'm looking for a career in </h4></label><select type="career" class="form-control" id="industryExample1" placeholder="Tech">
+            <option value="all">All Careers</option>
+            <option value="product">Product Management</option>
+            <option value="design">UI/UX Design</option>
+            <option value="dev">Web Development</option>
+          </select>
+
+          <!-- need to submit the value of the select and append to the url /mentors/value, then make an ajax call to url and grab the value -->
+
+          <a href="/mentors" class="btn btn-default">GO!</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<section class="info">
+  <div class="container">
+    <div class="row">
+      <h1>New Mentors</h1>
+
+      <% @mentors.where(id: 8).each do |mentor| %>
+        <div class="col-sm-4 mentor-pm">
+          <a href="<%= mentor_path(mentor.id) %>" class="info-icon"><i class="fa fa-user fa-2x"></i><a>
+          <h2><%= link_to mentor.first_name, mentor_path(mentor.id) %></h2>
+          <h3><%= mentor.industry %></h3>
+        </div>
+      <% end %>
+
+      <% @mentors.where(id: 9).each do |mentor| %>
+        <div class="col-sm-4 mentor-ux">
+          <a href="<%= mentor_path(mentor.id) %>" class="info-icon"><i class="fa fa-user fa-2x"></i><a>
+          <h2><%= link_to mentor.first_name, mentor_path(mentor.id) %></h2>
+          <h3><%= mentor.industry %></h3>
+        </div>
+      <% end %>
+
+      <% @mentors.where(id: 7).each do |mentor| %>
+        <div class="col-sm-4 mentor-web">
+          <a href="<%= mentor_path(mentor.id) %>" class="info-icon"><i class="fa fa-user fa-2x"></i><a>
+          <h2><%= link_to mentor.first_name, mentor_path(mentor.id) %></h2>
+          <h3><%= mentor.industry %></h3>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</section>
+
+<%= render partial: '/static/signup', locals:{user: @user} %>

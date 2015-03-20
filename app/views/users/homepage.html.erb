@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<section id="user-homepage">
+<div class="container">
+
+	<div class="row">
+		<h1> Hello, <%= current_user.first_name %></h1>
+	</div>
+	<% if current_user.type == 'Mentor' %>
+		<%= render 'users/mentors/home' %>
+	<% else %>
+		<%= render 'users/mentees/home' %>
+	<% end %>
+
+	<!-- <div class="row">
+	<div class="col-sm-3">
+	<form action="/user_questions" method="POST">
+		<label for="q_answer">
+			<% if @userquestion.where(user_id: current_user.id, question_id: @question.id).exists? %>
+				<script> window.location.reload() </script>
+			<% else %>
+				<%= @question.question %>
+			<% end %>
+		</label><br>
+		<input id="q_answer" type="textarea" name="answer" >
+		<input type="hidden" name="user_id" value="<%= current_user.id %>">
+		<input type="hidden" name="question_id" value="<%= @question.id %>">
+		<br>
+		<input type="submit" value="Submit Answer">
+	</form>
+	</div>
+</div> -->
+
+</div>
+</section>
